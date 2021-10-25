@@ -106,7 +106,24 @@ function init() {
 
     scene.add(Cubo[2]); // se añade el cubo a la escena 
 
-   
+    for(i=0;i<3;i++){
+        cubo[i].translateX(dim/2);
+        cubo[i].translateY(dim/2);
+        cubo[i].translateZ(dim/2);
+    }
+
+    //Transformaciones de escalado y translacion final sobre el eje y
+    for(i=0;i<3;i++)
+        if(i==1 || i==2){
+            escala=1/(2*i);//Escala a la mitad del cubo anterior
+            unidades=dim/2+dim/4+((dim/2+dim/4)/2)*(i-1);
+            cubo[i].scale.set(escala, escala,escala);
+            cubo[i].translateY(unidades);
+        }
+
+    //rotacion de los cubos 1 y 3
+    cubo[0].rotateY(angulo);
+    cubo[2].rotateY(angulo);s
 
     // SE AGREGA LA POSICION DE LA CAMARA 
     camera.position.set(15, 40, 30);
